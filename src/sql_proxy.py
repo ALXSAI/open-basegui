@@ -2,13 +2,16 @@ import mysql.connector
 
 
 class sql_proxy:
-    def __init__(self, _host="localhost", _username="root", _password="", _database="sainbase"):
+    def __init__(self, _host="localhost", _username="root", _password="", _database=""):
         self.mydb = mysql.connector.connect(
             host=_host,
             username=_username,
             password=_password,
             database=_database,
         )
+
+    def init_config(self, config):
+        self.mydb = mysql.connector.connect(**config)
 
     def close_connection(self):
         self.mydb.close()
